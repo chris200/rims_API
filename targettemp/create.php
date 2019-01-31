@@ -11,7 +11,7 @@ header("Access-Control-Max-Age: 3600");
 // <script >
 // setInterval(function(){window.open('index.php');},2000);
 // </script>
-
+//added comment
 
 // get database connection
 include_once '../config/database.php';
