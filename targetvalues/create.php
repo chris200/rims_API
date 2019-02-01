@@ -6,18 +6,17 @@ header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
-header("Location: index.php");
 
 // <script >
 // setInterval(function(){window.open('index.php');},2000);
 // </script>
-
+echo "Hello";
 
 // get database connection
 include_once '../config/database.php';
 
 // instantiate product object
-include_once '../objects/targettemp.php';
+include_once '../objects/targetvalues.php';
 
 $database = new Database();
 $db = $database->getConnection();
@@ -25,25 +24,14 @@ $db = $database->getConnection();
 $product = new Targetvalues($db);
 
 // get posted data
-//$data = json_decode(file_get_contents("php://input"));
-$targettemperature=$_POST['targettemperature'];
-//$data=['targettemperature']->$targettemperature;
+$data = json_decode(file_get_contents("php://input"));
+print_r($data);
 
-//print_r("php://input");
-
-$data=new stdClass();
-$data->targettemperature=$targettemperature;
-//print_r($data);
-//print_r($data->targettemperature);
-// make sure data is not empty
 if(
     !empty($data->targettemperature)
 ){
-
     // set product property values
     $product->targettemperature = $data->targettemperature;
-
-
     // create the product
     if($product->create()){
 
@@ -51,7 +39,7 @@ if(
         http_response_code(201);
 
         // tell the user
-        //echo json_encode(array("message" => "Product was created."));
+        echo json_encode(array("message" => "Product was created."));
         ?>
 
         <?php
@@ -76,7 +64,7 @@ else{
 
     // tell the user
     echo json_encode(array("message" => "Unable to create product. Data is incomplete."));
-    echo "Updated Target Temp";
+
 
 }
 

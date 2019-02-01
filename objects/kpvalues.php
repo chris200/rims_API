@@ -22,7 +22,7 @@ function read(){
                   p.timestamp DESC  limit 0,1";
 
       // prepare query statement
- 
+
       $stmt = $this->conn->prepare($query);
 
       // execute query
@@ -36,39 +36,43 @@ function read(){
 
 
   // create product
-  function create(){
-
-      // query to insert record
-      $query = "INSERT INTO
-                  " . $this->table_name . "
-              SET
-                  Kp=:Kp, Ki=:Ki , Kd=:Kd";
-
-      // prepare query
+  function create(){
 
-      $stmt = $this->conn->prepare($query);
-
-      // sanitize
-      $this->Kp=htmlspecialchars(strip_tags($this->Kp));
-      $this->Ki=htmlspecialchars(strip_tags($this->Ki));
-      $this->Kd=htmlspecialchars(strip_tags($this->Kd));
-
-      // bind values
-      $stmt->bindParam(":Kp", $this->Kp);
-      $stmt->bindParam(":Ki", $this->Ki);
-      $stmt->bindParam(":Kd", $this->Kd);
-
-      // execute query
-      if($stmt->execute()){
-          return true;
-      }
-
-      return false;
-
-  }
-
-
-
-
+
+
+      // query to insert record
+
+      $query = "INSERT INTO
+                  " . $this->table_name . "
+              SET
+                   kpvalue=:kpvalue";
+
+      // prepare query
+      print_r($query);
+      $stmt = $this->conn->prepare($query);
+
+
+
+      // sanitize
+
+
+      $this->kpvalue=htmlspecialchars(strip_tags($this->kpvalue));
+
+
+
+      // bind values
+
+
+      $stmt->bindParam(":kpvalue", $this->kpvalue);
+
+
+
+      // execute query
+
+      if($stmt->execute()){
+          return true;
+      }
+      return false;
+  }
 
 }

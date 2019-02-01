@@ -59,7 +59,6 @@ function read(){
       // bind values
       $stmt->bindParam(":targettemperature", $this->targettemperature);
 
-
       // execute query
       if($stmt->execute()){
           return true;

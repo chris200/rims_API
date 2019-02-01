@@ -42,33 +42,26 @@ function read(){
       $query = "INSERT INTO
                   " . $this->table_name . "
               SET
-                  Kp=:Kp, Ki=:Ki , Kd=:Kd";
+                   kdvalue=:kdvalue";
 
       // prepare query
+      print_r($query);
 
       $stmt = $this->conn->prepare($query);
 
       // sanitize
-      $this->Kp=htmlspecialchars(strip_tags($this->Kp));
-      $this->Ki=htmlspecialchars(strip_tags($this->Ki));
-      $this->Kd=htmlspecialchars(strip_tags($this->Kd));
+
+      $this->kdvalue=htmlspecialchars(strip_tags($this->kdvalue));
 
       // bind values
-      $stmt->bindParam(":Kp", $this->Kp);
-      $stmt->bindParam(":Ki", $this->Ki);
-      $stmt->bindParam(":Kd", $this->Kd);
+
+      $stmt->bindParam(":kdvalue", $this->kdvalue);
 
       // execute query
       if($stmt->execute()){
           return true;
       }
-
-      return false;
-
-  }
-
-
-
-
-
+      return false;
+  }
+
 }
