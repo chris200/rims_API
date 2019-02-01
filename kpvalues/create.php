@@ -10,12 +10,12 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 include_once '../config/database.php';
 
 // instantiate product object
-include_once '../objects/kvalues.php';
+include_once '../objects/kpvalues.php';
 
 $database = new Database();
 $db = $database->getConnection();
 
-$product = new Kvalues($db);
+$product = new Kpvalues($db);
 
 
 $data =  json_decode(file_get_contents("php://input"));
