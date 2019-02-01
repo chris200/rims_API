@@ -36,7 +36,7 @@ if($num>0){
         extract($row);
 
         $product_item=array(
-            "temperature" => $temperature
+            "temperature" => $temperature, 'currentTimestamp' =>$currentTimestamp
         );
 
         array_push($products_arr["records"], $product_item);

@@ -21,7 +21,8 @@ class Currentvalues{
 
         // select all query
         $query = "SELECT
-                    p.temperature as temperature
+                    p.temperature as temperature,
+                    p.timestamp as currentTimestamp
                 FROM
                     " . $this->table_name . " p
 
