@@ -21,7 +21,7 @@ class Currenttemp{
 
         // select all query
         $query = "SELECT
-                    p.temperature as temperature
+                    p.temperture as temperature
                 FROM
                     " . $this->table_name . " p
 
@@ -36,41 +36,7 @@ class Currenttemp{
         return $stmt;
     }
 
-    function readall(){
 
-
-
-        // select all query
-
-        $query = "SELECT
-                    p.timestamp as timestamp,
-                    p.temperature as temperature
-
-                FROM
-
-                    " . $this->table_name . " p
-
-
-
-                order by    p.timestamp DESC ";
-
-
-
-        // prepare query statement
-
-        $stmt = $this->conn->prepare($query);
-
-
-
-        // execute query
-
-        $stmt->execute();
-
-
-
-        return $stmt;
-
-    }
 
 
 
